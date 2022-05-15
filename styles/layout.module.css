@@ -1,0 +1,9 @@
+.container{
+    padding: 2vw 15vw;
+}
+@media (max-width: 850px) { 
+    .container{
+        padding: 2vw 10vw;
+    }
+     
+    }

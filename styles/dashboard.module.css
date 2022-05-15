@@ -1,0 +1,28 @@
+.welcome{
+  
+    padding: 20px 0;
+
+  
+    border-radius: 8px;   
+}
+.welcome_text{
+    font-size: 1.3em;
+}
+.welcome_image{
+    position: relative;
+    left: 50%;
+}
+.horizontal_line{
+    margin: 40px 0;
+    border-radius: 50px;
+    width: 50vw;
+    background: rgb(41,104,247);
+
+}
+.section_text{
+    margin: 0;
+}
+.section_subtext{
+    margin: 0;
+    margin-bottom: 20px;
+}
