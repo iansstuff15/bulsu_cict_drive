@@ -1,0 +1,38 @@
+.section_title{
+    color: #ff6161;
+    margin-bottom: 0;
+    font-size: 6rem;
+
+}
+.section_subtitle{
+    margin-top: 0;
+    font-size: 3rem;
+}
+.button_signin{
+    background-color: #ff6161;
+    color: white;
+    padding: 1rem 2rem;
+    font-weight: bolder;
+    border: none;
+    border-radius: .3rem;
+    cursor: pointer;
+}
+.alternate_option{
+    font-size: .9rem;
+    cursor: pointer;
+    color: rgb(162, 162, 162);
+}
+.unselected_role{
+    background-color: rgb(228, 228, 228);
+    cursor: pointer;
+    border-radius: 1rem;
+}
+.selected_role{
+    background-color: #ff6161;
+    cursor: pointer;
+    border-radius: 1rem;
+}
+.image_container{
+    margin: 1rem;
+    display: inline-block;
+}

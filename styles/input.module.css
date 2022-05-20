@@ -1,0 +1,30 @@
+.input{
+    border: none;
+    border-radius: 5px;
+    padding: 18px;
+    margin: 10px 0;
+    background-color: rgb(208, 205, 205);
+   
+    font-weight: bold;
+    width: 40vw;
+
+}
+.input:focus{
+    border: none;
+}
+/* .input:focus{
+    background-color: white;
+    box-shadow: 0px 0px 33px -10px rgba(66,161,247,0.75);
+    -webkit-box-shadow: 0px 0px 33px -10px rgba(66,161,247,0.75);
+    -moz-box-shadow: 0px 0px 33px -10px rgba(66,161,247,0.75);
+} */
+.label{
+    margin-right: 10px;
+    font-weight: bold;
+    line-height: 0.1;
+}
+@media (max-width: 752px) {
+    .input {
+        width: 100%;
+    }
+  }

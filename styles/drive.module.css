@@ -1,0 +1,38 @@
+.add_file{
+    background-color: rgb(255, 73, 73);
+    color: white;
+    text-align: end;
+    padding: 10px;
+    cursor: pointer;
+    /* float: right; */
+    border-radius: 8px;
+    float: right;
+}
+.link_current{
+    margin: 40px 0;
+    font-size: 2rem;
+    color: rgb(255, 73, 73);
+    cursor: pointer;
+    
+}
+.link{
+    margin: 2rem 0;
+    font-size: 1rem;
+    
+    cursor: pointer;
+}
+.header{
+    margin: 10px;
+    position: sticky;
+    justify-content: space-around;
+    padding: 25px 20px 5px 20px;
+    width: 100%;
+    position: -webkit-sticky;
+    top: 60px;
+    z-index: 1;
+    border-radius: 5px;
+   
+    background-color: white;
+    
+  
+}

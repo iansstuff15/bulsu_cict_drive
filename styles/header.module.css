@@ -1,23 +1,39 @@
 .container{
-    margin: 10px;
+    margin: 1rem;
     position: sticky;
     justify-content: space-around;
-    padding: 25px 20px;
+    padding: .3rem 1rem;
+    vertical-align: middle;
     width: 95vw;
     position: -webkit-sticky;
     top: 8px;
     z-index: 2;
     border-radius: 5px;
-    text-align: center;
-    background-color: white;
-    
+    /* text-align: center; */
     background: rgb(255,255,255);
-background: radial-gradient(circle, rgba(255,255,255,0.3393732492997199) 0%, rgba(255,255,255,1) 98%, rgba(255,255,255,1) 100%);
-backdrop-filter: saturate(180%) blur(100px);
+    background: radial-gradient(circle, rgba(255,255,255,0.3393732492997199) 0%, rgba(255,255,255,1) 98%, rgba(255,255,255,1) 100%);
+    backdrop-filter: saturate(180%) blur(100px);
     box-shadow: 0px 0px 68px -17px rgba(255,97,97,0.36);
     -webkit-box-shadow: 0px 0px 68px -17px rgba(255,97,97,0.36);
     -moz-box-shadow: 0px 0px 68px -17px rgba(255,97,97,0.36);
     
+}
+.nav_container{
+    position: relative;
+    bottom: 1.5rem;
+    text-align: center;
+    padding: 2rem 1rem;
+
+    margin: 1rem 0 0 0;
+    border-radius: .5rem;
+    /* background-color: #e6e6e6;
+    left: auto;
+    right: auto; */
+}
+.logo{
+    cursor: pointer;
+    position: relative;
+    top: 6rem;
 }
 .link{
     margin: 10px;
