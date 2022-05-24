@@ -23,7 +23,7 @@ export default function Home() {
 
   const SignIn = async(e) => {
     e.preventDefault()
-        toast.loading('Signing you in')
+        
         const body = {
             email: email,
             password:password,
@@ -36,14 +36,22 @@ export default function Home() {
             data => {
             console.log(data)
             console.log(data.data + 'data')
-            
+            if(data.status == 'success'){
+            toast.success('Sign-in success logging you in')
             state.uid = data.data._document.data.value.mapValue.fields.uid.stringValue
             state.firstName = data.data._document.data.value.mapValue.fields.firstName.stringValue
             state.lastName = data.data._document.data.value.mapValue.fields.lastName.stringValue
             state.role = data.data._document.data.value.mapValue.fields.role.stringValue
             state.email = data.data._document.data.value.mapValue.fields.email.stringValue
-           state.location = data.data._document.data.value.mapValue.fields.location.stringValue
            state.phone = data.data._document.data.value.mapValue.fields.phone.stringValue
+           state.userName = data.data._document.data.value.mapValue.fields.userName.stringValue
+           router.push('/dashboard')
+          
+          } else{
+            toast.error('error '+ data.status.code)
+            console.log('error '+ data.status.code)
+          }
+        
             // state.uid = data.data._document.data.value.mapValue.fields.uid.stringValue,
             // state.firstName = data.data._document.data.value.mapValue.fields.firstName.stringValue,
             // state.lastName = data.data._document.data.value.mapValue.fields.lastName.stringValue,
@@ -55,8 +63,7 @@ export default function Home() {
             console.log(state)
           })
 
-        toast.success('Sign-in success logging you in')
-        router.push('/dashboard')
+        
   }
 
   return (

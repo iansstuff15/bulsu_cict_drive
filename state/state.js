@@ -9,7 +9,7 @@ const state = proxy({
         email: '',
         phone: '',
         location: '',
-        
+        logs: {},
   });
   
   export { state };

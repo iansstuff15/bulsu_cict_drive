@@ -27,16 +27,21 @@ const Profile = () => {
 
             </span>
             <br/>
-            <Link href={'/signup'}>
-            <div className={styles.button_signout} onClick={()=>{Signout()}}>
-                <strong>
-
-                Create user profiles
-                </strong>
-
-            </div>
-            </Link>
-            
+            {
+                snapshot.role == 'administrator'?
+                <Link href={'/signup'}>
+                <div className={styles.button_signout} >
+                    <strong>
+    
+                    Create user profiles
+                    </strong>
+    
+                </div>
+                </Link>
+            :
+            null    
+            }
+           
           
             <br/>
                     <br/>

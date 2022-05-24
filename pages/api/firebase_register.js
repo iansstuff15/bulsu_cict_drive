@@ -32,6 +32,7 @@ export  default async function  handler (req, res)  {
        registerUserToFirestore(
         user,doc
       )
+      res.status(200).json({ status: "success"})
   } catch (error) {
     console.log( 'error: '+error )
     res.status(200).json({ status: error})
@@ -42,7 +43,7 @@ export  default async function  handler (req, res)  {
   
 
 
-  res.status(200).json({ status: "success"})
+
 
   
     
