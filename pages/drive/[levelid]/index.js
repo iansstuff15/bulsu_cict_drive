@@ -1,45 +1,45 @@
-import Layout from "../../components/layout"
+import Layout from "../../../components/layout"
 import Link from "next/link"
-import Folder from "../../components/folder"
-import styles from '../../styles/drive.module.css'
-import { useState } from "react"
-import InputComponent from "../../components/input"
-import { AddLevel } from "../../firebase"
+import Folder from "../../../components/folder"
+import styles from '../../../styles/drive.module.css'
+import { useState,useEffect } from "react"
+import InputComponent from "../../../components/input"
 import { useSnapshot } from "valtio"
-import { state } from "../../state/state"
+import { state } from "../../../state/state"
+import { useRouter } from 'next/router'
+import { collection,doc } from "firebase/firestore"
+import { db,AddPhase } from "../../../firebase"
+import { getDocs } from "firebase/firestore"
 import { ToastContainer, toast } from 'react-toastify';
-import { collection,getDocs } from "firebase/firestore"
-import { db } from "../../firebase"
 import 'react-toastify/dist/ReactToastify.css';
-import Image from "next/image"
-import { useEffect } from "react"
-const Level = () => {
-
+const Phase = () => {
     const snapshot = useSnapshot(state)
-
     const [addingFolder,setAddingFolder] = useState(false)
+    const router = useRouter()
+    const { levelid } = router.query
+
 
     const [name,setName] = useState('New File')
     const [filesMap, setFilesMap] = useState([])
     const now = new Date()
-    
-    const createLevel = () => {
+       
+    const createPhase = () => {
         const body = {
             name: name,
             createdBy: snapshot.userName,
             creatorUID: snapshot.uid,
             creatorRegisteredName: `${snapshot.lastName}, ${snapshot.firstName}`,
             dateTimeCreated: now,
-            action: `Added File: ${name}`,
+            action: `Added phase: ${name}`,
             date: `${now.getFullYear()}, ${now.toLocaleString('default', { month: 'long' })} ${now.getDate()}`,
         }
-        AddLevel(name,body)
+        AddPhase(levelid,body,name)
 
-        toast.success(`file ${name} successfully added`)
+        toast.success(`Phase ${name} successfully added`)
     }
 
     useEffect(()=>{
-        const logsCollection = collection(db,'files')
+        const logsCollection = collection(db,'files',levelid,'phases')
         getDocs(logsCollection).then((snapshot)=>{
          
      
@@ -65,57 +65,59 @@ const Level = () => {
 
     return(
         <Layout>
+
                 <div className={styles.header}>
-                <Link href={'/drive/level'}>
-                         <strong  className={styles.link_current}> /Level</strong>
+                <Link href={'/drive'}>
+                         <strong className={styles.link}>/drive</strong>
                 </Link>
-            {addingFolder?
+                <Link href={`/drive/${levelid}`}>
+                        <strong className={styles.link_current}>/{levelid}</strong>
+                </Link>
+                
+                {addingFolder?
             <strong className={styles.add_file} onClick={()=>setAddingFolder(false)}>
             Cancel
+            
             </strong>
+
             :
+                <>
                 <strong className={styles.add_file}  onClick={()=>setAddingFolder(true)}>
-                    Add level
-                </strong>}
+                    Add Phase
+                </strong>
+                <hr/>
+                </>
+                }
+                
                 {
                     addingFolder?
                     <>
                         <br/>
-                        <InputComponent type={'text'} label={'Level Name'} placeholder={'i.e. Level 1'} onChange={(e)=>setName(e.target.value)}/>
+                        <InputComponent type={'text'} label={'Phase Name'} placeholder={'i.e. Phase 1'} onChange={(e)=>setName(e.target.value)}/>
                         <br/>
                         <strong className={styles.send} onClick={()=>{
 
-                            createLevel()
+                            createPhase()
                             setAddingFolder(false)}}>
                         Save
                         </strong>
                         <br/>
+                        <br/>
+                        <hr/>
                     </>
                     :
                     null
                 }
-                </div>
-                <hr/>
-                {
-                  filesMap?
-                <>
-                {filesMap.map((data,index)=>(<Folder key={index} name={data.name}/>))}
-                </>
-                    
-                  :
-                  <h1 className={styles.empty_prompt}>
-                  <Image src={'/empty_illustration.png'} width={300} height={300}/>
-                  <br/>
-                  Oopps this part is this empty...
-  
-  
-                 </h1>
-                }
                 
+                </div>
+                
+                {filesMap.map((data,index)=>(<Folder key={index} name={data.name} link={`/drive/${levelid}/${data.id}`}/>))}
+
 
                 <ToastContainer theme="colored" position="bottom-right" autoClose={800}/>
+              
         </Layout>
     )
 }
 
-export default Level
+export default Phase

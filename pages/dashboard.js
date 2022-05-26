@@ -48,7 +48,7 @@ const DashBoard = () => {
             </div>
             <h1 className={styles.section_text}>Places</h1>
             <h4 className={styles.section_subtext}>to navigate</h4>
-            <NavigateTo to={'/drive/level'}/>
+            <NavigateTo to={'/drive'}/>
             <NavigateTo to={'/drive/phase'}/>
             <NavigateTo to={'/drive/areas'}/>
             <NavigateTo to={'/drive/files'}/>
